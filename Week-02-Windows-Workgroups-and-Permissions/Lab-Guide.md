@@ -1,651 +1,563 @@
-# Week 2 Lab: Complete Beginner's Guide
-> Step-by-step instructions explained like you're 14 years old
+# Week 2 Lab Guide: Terminal vs GUI
 
-![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green)
-![Duration](https://img.shields.io/badge/Duration-60%20min-orange)
-
-## 🌟 What You'll Learn Today
-
-You're going to connect two computers together so they can share files! Think of it like creating a small network between two friends' computers. By the end, you'll be able to:
-
-- Make two computers recognize each other
-- Create user accounts (like usernames for logging in)
-- Share folders between computers
-- Control who can access what files
+Side-by-side comparison of Terminal (command line) and GUI (clicking) methods.
 
 ---
 
-## 📖 Important Terms (Simple Explanations)
+## Important Terms
 
-| Term | Simple Explanation | Real-Life Example |
-|------|-------------------|-------------------|
-| **Workgroup** | A group name for computers that want to share files | Like a club name - everyone in "Chess Club" can share chess books |
-| **Network Discovery** | Letting your computer find other computers nearby | Like turning on your phone's Bluetooth so it can find other devices |
-| **Ping** | Sending a "hello" message to another computer | Like texting "you there?" to a friend |
-| **Share/Shared Folder** | A folder that other computers can access | Like a shared Google Drive folder everyone can see |
-| **User Account** | A username and password to log into a computer | Like your Netflix or Instagram account |
-| **Group** | A collection of users | Like putting students into Team A and Team B |
-| **Permissions** | Rules about who can open, edit, or delete files | Like house rules: some people can use the kitchen, others can't |
-| **GUI** | Graphical User Interface - clicking buttons (the normal way) | Using your phone by tapping icons |
-| **Terminal/CMD** | Command Prompt - typing commands (the text way) | Like using text commands instead of touching icons |
-| **Administrator** | A special account that can change important settings | Like a teacher having the password to school computers |
-
----
-
-## 📋 What You Need Before Starting
-
-- [ ] 2 Windows computers (we'll call them PC1 and PC2)
-- [ ] Both computers connected to the same WiFi or plugged into the same network
-- [ ] Administrator password (ability to change computer settings)
-- [ ] About 1 hour of time
-- [ ] A way to take screenshots (PrtScn button on keyboard)
+| Term | Definition |
+|------|------------|
+| Workgroup | A group name for computers that want to share files with each other |
+| Network Discovery | Letting your computer find other computers nearby |
+| Ping | Sending a "hello" message to another computer to check if it's there |
+| Share/Shared Folder | A folder that other computers on the network can access |
+| User Account | A username and password that lets someone use the computer |
+| Group | A collection of users |
+| Permissions | Rules about who can open, edit, or delete files |
+| GUI | Graphical User Interface - clicking buttons and windows |
+| Terminal/CMD | Command Prompt - typing commands |
+| Administrator | A special account that can change important computer settings |
 
 ---
 
-# 🎯 ACTIVITY 1: Make Your Two PCs See Each Other
+## TASK 1: RENAME YOUR COMPUTER
 
-## **Goal:** Connect both computers to the same workgroup so they can find each other
-
----
-
-## **STEP 1: Give Your Computers Simple Names**
-
-Let's call them PC1 and PC2 so it's easy to remember which is which.
-
-### **On the First Computer (PC1):**
-
-1. **Click the Start button** - This is the Windows logo in the bottom-left corner of your screen
-2. **Click the Settings icon** - Looks like a gear ⚙️, it's right above the power button
-3. **Click "System"** - First big box at the top-left (has a laptop picture 💻)
-4. **Scroll all the way down on the left menu**
-5. **Click "About"** - It's the last option at the bottom
-6. Look for **"Device specifications"** section on the right side
-7. **Click the "Rename this PC" button** - It's blue
-8. A small window pops up in the middle of your screen
-9. **Type: PC1** in the text box
-10. **Click "Next"**
-11. **Click "Restart now"** - Your computer will turn off and back on (takes about 2 minutes)
-
-### **On the Second Computer (PC2):**
-
-**Do the exact same steps above, but:**
-- In step 9, type **PC2** instead of PC1
-
-✅ **Checkpoint:** Both computers now have clear names!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Right-click **Start** button (bottom-left corner) | 1. Click **Start** button (bottom-left corner of screen) |
+| 2. Click **Windows PowerShell (Admin)** | 2. Click **Settings** icon (gear icon, above the power button) |
+| 3. Type: `Rename-Computer -NewName "PC1"` | 3. In Settings window, click **System** (first option, top-left, has a laptop icon) |
+| 4. Press **Enter** | 4. On the left sidebar, scroll to the very bottom |
+| 5. Type: `Restart-Computer` | 5. Click **About** (last option in left menu) |
+| 6. Press **Enter** | 6. On the right side, scroll down to "Device specifications" section |
+| | 7. Click **Rename this PC** button (blue button near computer name) |
+| | 8. A small window pops up in the center |
+| | 9. Type: **PC1** in the text box |
+| | 10. Click **Next** button (bottom-right of popup) |
+| | 11. Click **Restart now** button |
 
 ---
 
-## **STEP 2: Put Both Computers in the Same Workgroup**
+## TASK 2: CHANGE WORKGROUP NAME
 
-Think of this like putting them both in the same team!
-
-### **On PC1:**
-
-1. **Right-click the Start button** (the Windows logo bottom-left)
-2. A menu pops up with lots of options
-3. **Click "System"** (it's about 4th option from the top, has a laptop icon 💻)
-4. The Settings window opens
-5. On the right side, look for "Related settings" (blue text links)
-6. **Click "Advanced system settings"** (it's a blue link)
-7. A new window called "System Properties" opens
-8. At the top of this window, **click the "Computer Name" tab**
-9. At the bottom, **click the "Change..." button**
-10. Another smaller window opens
-11. You'll see two choices: "Domain" and "Workgroup"
-12. **Click the circle next to "Workgroup"** (make sure it's selected)
-13. In the text box next to Workgroup, **delete what's there** and type: **NetAppsLab**
-   - ⚠️ **Important:** Spell it exactly like this! Capital N, capital A, capital L, no spaces
-14. **Click "OK"**
-15. A welcome message appears - **click "OK"**
-16. Another message says you need to restart - **click "OK"**
-17. **Click "Close"** on the System Properties window
-18. **Click "Restart Now"**
-
-### **On PC2:**
-
-**Do the exact same steps!** Make sure you type **NetAppsLab** exactly the same way.
-
-✅ **Checkpoint:** Both computers are now in the "NetAppsLab" workgroup!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Right-click **Start** button | 1. Right-click **Start** button (bottom-left corner, Windows logo) |
+| 2. Click **Command Prompt (Admin)** or **PowerShell (Admin)** | 2. In the menu that pops up, click **System** (about 4th option from top, has a laptop icon) |
+| 3. Type: `wmic computersystem where name="%computername%" call joindomainorworkgroup name="NetAppsLab"` | 3. The Settings window opens to "About" page |
+| 4. Press **Enter** | 4. On the right side, look for "Related settings" section (blue links) |
+| 5. Restart computer | 5. Click **Advanced system settings** (blue link on the right side) |
+| | 6. A "System Properties" window opens |
+| | 7. At the top of this window, click the **Computer Name** tab |
+| | 8. At the bottom of the window, click **Change...** button |
+| | 9. A smaller window opens titled "Computer Name/Domain Changes" |
+| | 10. In "Member of" section (bottom half), click the **Workgroup** circle/radio button |
+| | 11. In the text box next to Workgroup, delete old text and type: **NetAppsLab** |
+| | 12. Click **OK** button (bottom-right) |
+| | 13. A welcome message appears - click **OK** |
+| | 14. Another message says restart - click **OK** |
+| | 15. Click **Close** on System Properties window |
+| | 16. Click **Restart Now** button |
 
 ---
 
-## **STEP 3: Turn On Network Discovery**
+## TASK 3: ENABLE NETWORK DISCOVERY
 
-This is like turning on your computer's radar to find other computers.
-
-### **On BOTH PC1 and PC2 (do this on each computer):**
-
-1. **Click the Start button**
-2. **Type: Control Panel** (just start typing, you don't need to click anywhere first)
-3. **Press Enter** on your keyboard
-4. The Control Panel window opens
-5. In the top-right corner, make sure it says "View by: Category"
-6. **Click "Network and Internet"** (first box with a green globe 🌐)
-7. **Click "Network and Sharing Center"** (second option)
-8. On the LEFT side, **click "Change advanced sharing settings"** (blue text)
-9. You'll see sections called "Private", "Guest or Public", and "All Networks"
-10. **Click the down arrow ▼ next to "Private"** (if it's not already open)
-11. Under the Private section, find "Network discovery"
-12. **Click the circle next to "Turn on network discovery"** ⚫ changes to 🔵
-13. Also **check the box** that says "Turn on automatic setup of network connected devices" ✅
-14. Scroll down a little bit to "File and printer sharing"
-15. **Click the circle next to "Turn on file and printer sharing"** ⚫ changes to 🔵
-16. **Scroll all the way to the bottom** of the page
-17. **Click "Save changes"** (bottom-right corner)
-
-✅ **Checkpoint:** Network discovery is now ON for both computers!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Right-click **Start** → Click **Command Prompt (Admin)** | 1. Click **Start** button (bottom-left, Windows logo) |
+| 2. Type: `netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes` | 2. Type: **Control Panel** (start typing, no need to click search box) |
+| 3. Press **Enter** | 3. Press **Enter** - Control Panel window opens |
+| 4. Type: `netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes` | 4. In the top-right corner, make sure "View by:" is set to **Category** |
+| 5. Press **Enter** | 5. Click **Network and Internet** (green globe icon, first option) |
+| | 6. Click **Network and Sharing Center** (second option, has network icon) |
+| | 7. On the LEFT sidebar, click **Change advanced sharing settings** (blue link) |
+| | 8. You'll see "Private", "Guest or Public", and "All Networks" sections |
+| | 9. Click the down arrow next to **Private** (if not already expanded) |
+| | 10. Under Private section, find "Network discovery" |
+| | 11. Click the circle next to **Turn on network discovery** |
+| | 12. Also check the box: **Turn on automatic setup of network connected devices** |
+| | 13. Scroll down a bit to "File and printer sharing" |
+| | 14. Click the circle next to **Turn on file and printer sharing** |
+| | 15. Scroll to the very bottom of the page |
+| | 16. Click **Save changes** button (bottom-right corner) |
 
 ---
 
-## **STEP 4: Turn Off Firewall (Just for This Lab!)**
+## TASK 4: TURN OFF FIREWALL (Temporarily for lab)
 
-The firewall is like a security guard that might block our computers from talking. We'll turn it off temporarily.
-
-⚠️ **Remember:** Turn this back ON after you finish the lab!
-
-### **On BOTH PC1 and PC2:**
-
-1. **Click Start**
-2. **Type: firewall**
-3. **Click "Windows Defender Firewall"** (has a shield icon 🛡️)
-4. A window opens
-5. On the LEFT side, **click "Turn Windows Defender Firewall on or off"** (second option)
-6. You'll see two sections: "Private network settings" and "Public network settings"
-7. Under **"Private network settings"** (top section):
-8. **Click the circle next to "Turn off Windows Defender Firewall (not recommended)"** ⚫ changes to 🔵
-9. **Click "OK"** at the bottom
-
-✅ **Checkpoint:** Firewall is temporarily off so computers can talk freely!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Right-click **Start** → Click **Command Prompt (Admin)** | 1. Click **Start** button (bottom-left corner) |
+| 2. Type: `netsh advfirewall set privateprofile state off` | 2. Type: **firewall** |
+| 3. Press **Enter** | 3. In the results, click **Windows Defender Firewall** (has a shield icon) |
+| | 4. Windows Defender Firewall window opens |
+| **To turn back ON:** | 5. On the LEFT sidebar, click **Turn Windows Defender Firewall on or off** (second option, has a pencil icon) |
+| Type: `netsh advfirewall set privateprofile state on` | 6. You'll see two sections: "Private network settings" and "Public network settings" |
+| | 7. Under **Private network settings** (top section): |
+| | 8. Click the circle next to **Turn off Windows Defender Firewall (not recommended)** |
+| | 9. At the bottom of the window, click **OK** button |
+| | **Remember: Turn it back ON after lab!** |
+| | - Repeat steps 1-6 |
+| | - Click circle next to **Turn on Windows Defender Firewall** |
+| | - Click **OK** |
 
 ---
 
-## **STEP 5: Test If Computers Can Talk to Each Other**
+## TASK 5: CHECK YOUR COMPUTER NAME
 
-Now let's see if PC1 can say "hello" to PC2!
-
-### **On PC1:**
-
-1. **Click Start**
-2. **Type: cmd** (these three letters)
-3. **Press Enter**
-4. A black window opens - this is called "Command Prompt" or "Terminal"
-5. **Type this exactly:** `ping PC2`
-6. **Press Enter**
-7. **Watch what happens:**
-
-**✅ SUCCESS looks like this:**
-```
-Reply from PC2... bytes=32 time<1ms TTL=128
-Reply from PC2... bytes=32 time<1ms TTL=128
-Reply from PC2... bytes=32 time<1ms TTL=128
-Reply from PC2... bytes=32 time<1ms TTL=128
-```
-**This means PC1 found PC2!** 🎉
-
-**❌ FAILURE looks like this:**
-```
-Request timed out
-Request timed out
-Request timed out
-Request timed out
-```
-**This means they can't see each other yet.** Go back and check:
-- Are both computers on the same WiFi or network?
-- Is the workgroup name spelled exactly the same on both? (**NetAppsLab**)
-- Is network discovery turned ON on both?
-- Is the firewall turned OFF on both?
-
-### **On PC2:**
-
-**Do the same test, but type:** `ping PC1`
-
-✅ **Checkpoint:** Both computers can ping each other successfully!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Click **Start** | 1. Click **Start** button (bottom-left corner) |
+| 2. Type: **cmd** | 2. Click **Settings** icon (gear icon) |
+| 3. Press **Enter** | 3. Click **System** (first big icon, top-left) |
+| 4. Type: `hostname` | 4. On the LEFT sidebar, scroll to bottom |
+| 5. Press **Enter** | 5. Click **About** (last option) |
+| 6. You'll see: **PC1** or **PC2** | 6. On the RIGHT side, look at the top section called "Device specifications" |
+| | 7. Find the line that says **Device name:** - this shows **PC1** or **PC2** |
+| | 8. Below that, find **Workgroup:** - should show **NetAppsLab** |
 
 ---
 
-## **STEP 6: Check If They Can See Each Other's Stuff**
+## TASK 6: PING (TEST IF COMPUTERS CAN TALK)
 
-### **Alternative Test Using File Explorer (The Easy Way):**
-
-1. **Click the File Explorer icon** (📁 folder on the bottom bar)
-   - OR press **Windows key + E** on your keyboard
-2. File Explorer opens
-3. On the LEFT side, **scroll down**
-4. **Click "Network"** (near the bottom, has a network icon 🌐)
-5. **Look in the main area**
-
-**✅ You should see:**
-- On PC1, you should see **PC2** with a computer icon
-- On PC2, you should see **PC1** with a computer icon
-
-**If you see the other computer, SUCCESS!** 🎉
-
-**If you see "Network discovery is turned off" - go back to Step 3 and try again**
+| TERMINAL METHOD | GUI METHOD (Alternative) |
+|-----------------|--------------------------|
+| 1. Click **Start** button | **No direct GUI for ping, but you can check if computer is visible:** |
+| 2. Type: **cmd** | 1. Click **File Explorer** icon (folder icon on taskbar at bottom) |
+| 3. Press **Enter** - Black window opens | - OR press **Windows key + E** |
+| 4. Type: `ping PC2` (if you're on PC1) | 2. File Explorer window opens |
+| OR `ping PC1` (if you're on PC2) | 3. On the LEFT sidebar, scroll down |
+| 5. Press **Enter** | 4. Click **Network** (near the bottom, has a network icon) |
+| 6. SUCCESS looks like: | 5. In the main area, you should see icons for: |
+| `Reply from PC2... bytes=32 time<1ms TTL=128` | - **PC1** (if you're on PC2) |
+| 7. FAILURE looks like: | - **PC2** (if you're on PC1) |
+| `Request timed out` | 6. If you see the other computer = SUCCESS! |
+| | 7. If you see "Network discovery is turned off" = Go back to Task 3 |
 
 ---
 
-# 🎯 ACTIVITY 2: Create Users and Share a Folder
+## TASK 7: VIEW SHARED FOLDERS ON ANOTHER COMPUTER
 
-## **Goal:** Make a user account, put them in a group, and create a shared folder
-
----
-
-## **STEP 7: Create a User Account**
-
-We'll create a person called "User1" who can access our shared folder.
-
-### **On PC1 Only:**
-
-1. **Press and hold the Windows key** (on your keyboard)
-2. While holding it, **press R**
-3. A small box called "Run" appears in the bottom-left
-4. **Type: compmgmt.msc**
-5. **Press Enter** or click OK
-6. A big window called "Computer Management" opens
-7. On the LEFT side, look for **"Local Users and Groups"**
-8. **Click the little arrow ▶** next to it (to expand it)
-9. Two items appear below it: "Users" and "Groups"
-10. **Click "Users"**
-11. On the RIGHT side, you see a list of existing users
-12. **Right-click in the EMPTY WHITE SPACE** (don't click on any existing user)
-13. A menu pops up - **Click "New User..."**
-14. A "New User" window opens - **Fill in the form:**
-
-**Type exactly:**
-- **User name:** `User1`
-- **Full name:** (leave this empty or type anything)
-- **Description:** `Test User`
-- **Password:** `P@ssword123`
-  - ⚠️ Use capital P, @ symbol, lowercase ssword, then 123
-- **Confirm password:** `P@ssword123` (type it again exactly)
-
-15. **Look at the checkboxes below:**
-- ❌ **UNCHECK** "User must change password at next logon" (click it to remove the checkmark)
-- ✅ **CHECK** "Password never expires" (click to add a checkmark)
-
-16. **Click "Create"** (bottom-right)
-17. **User1 appears in the list!** ✅
-18. **Click "Close"**
-
-✅ **Checkpoint:** User1 is created!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Click **File Explorer** icon (folder on taskbar) |
+| 2. Type: `net view \\PC2` | 2. File Explorer opens |
+| (Replace PC2 with the other computer's name) | 3. At the TOP, find the address bar (shows "This PC" or "Quick access") |
+| 3. Press **Enter** | 4. Click inside the address bar (the white/gray bar at top) |
+| 4. Shows list of shared folders like: | 5. Type: `\\PC2` (use two backslashes, then the other computer name) |
+| `Share name    Resource` | - If on PC2, type: `\\PC1` |
+| `-----------------------------` | 6. Press **Enter** |
+| `SharedData    C:\SharedData` | 7. A folder window opens showing all shared folders on that computer |
+| | 8. You should see **SharedData** folder (after you create it in next tasks) |
+| | 9. If you see folders = SUCCESS |
+| | 10. If you get error "Windows cannot access..." = Check firewall, network discovery |
 
 ---
 
-## **STEP 8: Create a Group**
+## TASK 8: CHECK IF NETWORK SERVICES ARE RUNNING
 
-A group is like a team. Instead of giving permissions to each person, we give permissions to the whole team!
-
-### **On PC1:**
-
-1. If Computer Management is still open, great! If not:
-   - **Press Windows + R**
-   - **Type: compmgmt.msc**
-   - **Press Enter**
-2. On the LEFT, expand **"Local Users and Groups"** (click the arrow)
-3. This time, **click "Groups"** (not Users)
-4. On the RIGHT, you see existing groups like "Administrators", "Users", etc.
-5. **Right-click in the EMPTY WHITE SPACE** (below all the groups)
-6. A menu pops up - **Click "New Group..."**
-7. A "New Group" window opens
-8. **Fill in:**
-   - **Group name:** `ProjectTeam`
-   - **Description:** `Project Team Members` (optional)
-9. **Don't add any members yet** - leave that box empty
-10. **Click "Create"**
-11. **ProjectTeam appears in the list!** ✅
-12. **Click "Close"**
-
-✅ **Checkpoint:** ProjectTeam group is created!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Click **Start** | 1. Press **Windows key + R** (on keyboard, hold Windows key, press R) |
+| 2. Type: **powershell** | 2. A small "Run" box appears at bottom-left |
+| 3. Press **Enter** | 3. Type: **services.msc** |
+| 4. Type: `Get-Service LanmanServer` | 4. Click **OK** button (or press Enter) |
+| 5. Press **Enter** - Should show **Running** | 5. "Services" window opens with a big list |
+| 6. Type: `Get-Service LanmanWorkstation` | 6. The list is alphabetical - scroll down to the **S** section |
+| 7. Press **Enter** - Should show **Running** | 7. Look for **Server** (Description says "Supports file, print...") |
+| | 8. Check the **Status** column (middle) - should say **Running** |
+| | 9. Scroll down to the **W** section |
+| | 10. Look for **Workstation** (Description says "Creates and maintains...") |
+| | 11. Check the **Status** column - should say **Running** |
+| | **If either shows "Stopped":** |
+| | - Right-click the service name |
+| | - Click **Start** from menu |
+| | - Wait for Status to change to "Running" |
 
 ---
 
-## **STEP 9: Add User1 to the ProjectTeam Group**
+## TASK 9: CREATE A USER ACCOUNT
 
-Now let's put User1 into the ProjectTeam group!
-
-### **On PC1:**
-
-1. In Computer Management, make sure **"Groups"** is selected on the left
-2. On the right, **find "ProjectTeam"** in the list
-3. **Double-click "ProjectTeam"** (double-click = click twice quickly)
-4. "ProjectTeam Properties" window opens
-5. In the middle, you see "Members:" with an empty white box
-6. At the bottom, **click the "Add..." button**
-7. A "Select Users" window pops up
-8. At the bottom, there's a box that says "Enter the object names to select"
-9. **Click inside that box** and **type: User1**
-10. **Click "Check Names"** (bottom-left of the window)
-11. If you typed it correctly, "User1" gets underlined
-12. **Click "OK"** (bottom-right)
-13. **You're back in ProjectTeam Properties** - **User1 now appears in the Members box!** ✅
-14. **Click "OK"** to close
-
-✅ **Checkpoint:** User1 is now a member of ProjectTeam!
-
----
-
-## **STEP 10: Create a Folder to Share**
-
-Let's make a folder that both computers can access.
-
-### **On PC1:**
-
-1. **Click the File Explorer icon** (📁 on the bottom taskbar)
-   - OR press **Windows key + E**
-2. File Explorer opens
-3. On the LEFT side, **click "This PC"** (has a computer icon 🖥️)
-4. In the main area, you see your drives
-5. **Double-click "Local Disk (C:)"**
-6. You're now inside the C: drive (the address bar at top shows "This PC > Local Disk (C:)")
-7. **Right-click in the EMPTY WHITE SPACE** (not on any folder)
-8. A menu appears → **Hover your mouse over "New"** → A side menu appears
-9. **Click "Folder"**
-10. A new folder appears with the name highlighted in blue (says "New folder")
-11. **Type: SharedData** (this replaces "New folder")
-12. **Press Enter** on your keyboard
-
-✅ **Checkpoint:** You now have a folder at C:\SharedData!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Right-click **Start** → Click **Command Prompt (Admin)** | 1. Press **Windows key + R** keys together |
+| 2. Type: `net user User1 P@ssword123 /add` | 2. A small "Run" box appears in bottom-left corner |
+| 3. Press **Enter** | 3. Type: **compmgmt.msc** |
+| 4. Should see: "The command completed successfully" | 4. Press **Enter** or click **OK** |
+| | 5. "Computer Management" window opens (big window with tree on left) |
+| **To verify:** | 6. On the LEFT panel, look for **Local Users and Groups** |
+| `net user` | 7. Click the arrow next to "Local Users and Groups" to expand it |
+| Shows list of all users (User1 should be there) | 8. Two items appear below it: "Users" and "Groups" |
+| | 9. Click **Users** |
+| | 10. On the RIGHT panel, you see a list of existing users |
+| | 11. Right-click in the EMPTY WHITE SPACE (not on an existing user) |
+| | 12. A menu pops up - Click **New User...** |
+| | 13. A "New User" window opens |
+| | 14. Fill in the form: |
+| | - **User name:** Type **User1** |
+| | - **Full name:** (leave empty or type Full Name) |
+| | - **Description:** Type **Test User** |
+| | - **Password:** Type **P@ssword123** |
+| | - **Confirm password:** Type **P@ssword123** again |
+| | 15. Look at the checkboxes below: |
+| | - UNCHECK "User must change password at next logon" |
+| | - CHECK "Password never expires" |
+| | 16. Click **Create** button (bottom-right) |
+| | 17. User1 appears in the list! |
+| | 18. Click **Close** button |
 
 ---
 
-## **STEP 11: Share the Folder on the Network**
+## TASK 10: CREATE A GROUP
 
-Now let's make this folder accessible from PC2!
-
-### **On PC1:**
-
-1. In File Explorer, make sure you're in the C:\ drive
-2. **Find the "SharedData" folder** you just created
-3. **Right-click the SharedData folder**
-4. A big menu appears - **scroll to the bottom** and **click "Properties"**
-5. "SharedData Properties" window opens with tabs at the top
-6. **Click the "Sharing" tab** (3rd or 4th tab)
-7. In the middle of this window, **click "Advanced Sharing"** button
-8. A smaller "Advanced Sharing" window pops up
-9. At the top, **check the box ✅** next to **"Share this folder"**
-10. Below that, "Share name:" should already say **SharedData** (perfect! don't change it)
-11. Below that, **click "Permissions"** button
-12. "Permissions for SharedData" window opens
-13. In the top section, you see **"Everyone"**
-14. We want to remove this and add our ProjectTeam instead
-15. **Click "Everyone"** to select it (it highlights in blue)
-16. **Click "Remove"** button (Everyone disappears)
-17. Now **click "Add"** button
-18. "Select Users or Groups" window pops up
-19. In the box at the bottom, **type: ProjectTeam**
-20. **Click "Check Names"** - ProjectTeam gets underlined
-21. **Click "OK"**
-22. You're back in Permissions window
-23. **Click "ProjectTeam"** in the list to select it
-24. In the bottom section "Permissions for ProjectTeam":
-25. **Check the box ✅** under **"Allow"** for **"Change"**
-   - "Read" should automatically get checked too ✅
-26. **Click "OK"** (bottom-right)
-27. **Click "OK"** on the Advanced Sharing window
-28. **Leave the Properties window open** (we need it for the next step)
-
-✅ **Checkpoint:** The folder is now shared with ProjectTeam on the network!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Press **Windows key + R** |
+| 2. Type: `net localgroup ProjectTeam /add` | 2. Type: **compmgmt.msc** |
+| 3. Press **Enter** | 3. Press **Enter** |
+| 4. Should see: "The command completed successfully" | 4. Computer Management window opens |
+| | 5. On the LEFT panel, find **Local Users and Groups** |
+| **To verify:** | 6. Click the arrow to expand it (if not already expanded) |
+| `net localgroup` | 7. You see two folders: "Users" and "Groups" |
+| Shows all groups (ProjectTeam should be there) | 8. Click **Groups** |
+| | 9. On the RIGHT panel, you see existing groups (like Administrators, Users, etc.) |
+| | 10. Right-click in the EMPTY WHITE SPACE (below the groups list) |
+| | 11. A menu pops up - Click **New Group...** |
+| | 12. A "New Group" window opens |
+| | 13. Fill in: |
+| | - **Group name:** Type **ProjectTeam** |
+| | - **Description:** Type **Project Team Members** (optional) |
+| | 14. Don't add members yet (we'll do that next) |
+| | 15. Click **Create** button (bottom-right) |
+| | 16. ProjectTeam appears in the list! |
+| | 17. Click **Close** button |
 
 ---
 
-## **STEP 12: Set NTFS Permissions**
+## TASK 11: ADD USER TO A GROUP
 
-This is another layer of security that controls who can actually use the files.
-
-### **On PC1:**
-
-**If the SharedData Properties window is still open, great! If not:**
-- Right-click SharedData folder → Properties
-
-1. At the top of the Properties window, **click the "Security" tab**
-2. You see two sections:
-   - Top: Lists users and groups
-   - Bottom: Shows what they can do
-3. In the middle, **click "Edit"** button
-4. "Permissions for SharedData" window pops up
-5. **Click "Add"** button (bottom-left area)
-6. "Select Users or Groups" window appears
-7. In the bottom box, **type: ProjectTeam**
-8. **Click "Check Names"** - ProjectTeam gets underlined
-9. **Click "OK"**
-10. Back in Permissions window, **click "ProjectTeam"** in the top list
-11. In the bottom section "Permissions for ProjectTeam":
-12. **Find the row that says "Modify"** (about 3rd row down)
-13. **Check the box ✅** under **"Allow"** for **"Modify"**
-14. When you check Modify, several other boxes automatically check:
-    - Read & execute ✅
-    - List folder contents ✅
-    - Read ✅
-    - Write ✅
-15. **Click "OK"** (bottom-right)
-16. **Click "OK"** or "Close" to close the Properties window
-
-✅ **Checkpoint:** NTFS permissions are set! ProjectTeam can now modify files!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Press **Windows key + R** |
+| 2. Type: `net localgroup ProjectTeam User1 /add` | 2. Type: **compmgmt.msc** |
+| 3. Press **Enter** | 3. Press **Enter** |
+| 4. Should see: "The command completed successfully" | 4. Expand **Local Users and Groups** (click arrow) |
+| | 5. Click **Groups** (not Users) |
+| | 6. On the RIGHT side, find **ProjectTeam** in the list |
+| | 7. **Double-click ProjectTeam** (double-click, not single!) |
+| | 8. "ProjectTeam Properties" window opens |
+| | 9. In the middle section, you see "Members:" with an empty box below |
+| | 10. At the bottom, click **Add...** button |
+| | 11. "Select Users" window pops up |
+| | 12. In the bottom section, there's a box "Enter the object names to select" |
+| | 13. Click inside that box and type: **User1** |
+| | 14. Click **Check Names** button (bottom-left of this window) |
+| | 15. If correct, "User1" becomes underlined |
+| | 16. Click **OK** (bottom-right) |
+| | 17. Back in ProjectTeam Properties, you see **User1** in the Members list! |
+| | 18. Click **OK** to close |
 
 ---
 
-# 🎯 ACTIVITY 3: Connect to the Shared Folder from PC2
+## TASK 12: CHECK WHO IS IN A GROUP
 
-## **Goal:** Access PC1's shared folder from PC2
-
----
-
-## **STEP 13: Create User1 on PC2**
-
-For this to work, PC2 needs to know about User1 too!
-
-### **On PC2:**
-
-**Repeat STEP 7** (Create a User Account):
-- Open compmgmt.msc
-- Create user "User1" with password "P@ssword123"
-- Same settings as before
-
-✅ **Checkpoint:** User1 exists on both PC1 and PC2!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Press **Windows key + R** |
+| 2. Type: `net localgroup ProjectTeam` | 2. Type: **compmgmt.msc** → Press **Enter** |
+| 3. Press **Enter** | 3. Expand **Local Users and Groups** → Click **Groups** |
+| 4. Shows list: | 4. Find **ProjectTeam** in the list on the right |
+| `Members` | 5. **Double-click ProjectTeam** |
+| `---------------` | 6. "ProjectTeam Properties" window opens |
+| `User1` | 7. In the middle section, under "Members:", you see the list |
+| `The command completed successfully.` | 8. Should show: **User1** |
+| | 9. Click **OK** or **Cancel** to close |
 
 ---
 
-## **STEP 14: Map the Shared Folder as a Drive Letter**
+## TASK 13: CREATE A FOLDER
 
-This means PC2 will see PC1's SharedData folder as if it's a drive on PC2 (like drive Z:)!
-
-### **On PC2:**
-
-1. **Click Start**
-2. **Type: cmd**
-3. **Press Enter** - Black Command Prompt window opens
-4. **Type this command exactly:**
-   ```
-   net use Z: \\PC1\SharedData /user:PC1\User1 P@ssword123
-   ```
-   
-**Let me explain this command:**
-- `net use` = connect to a network folder
-- `Z:` = call it drive Z
-- `\\PC1\SharedData` = the folder on PC1 (two backslashes, then PC1, backslash, SharedData)
-- `/user:PC1\User1` = login as User1 from PC1
-- `P@ssword123` = the password
-
-5. **Press Enter**
-
-**✅ You should see:**
-```
-The command completed successfully.
-```
-
-**If you see an error:**
-- Check that you spelled everything correctly (capital letters matter!)
-- Make sure PC1 is turned on
-- Make sure you can still ping PC1
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Click **File Explorer** icon (folder on taskbar at bottom) |
+| 2. Type: `mkdir C:\SharedData` | - OR press **Windows key + E** |
+| 3. Press **Enter** | 2. File Explorer opens |
+| 4. Folder created! | 3. On the LEFT sidebar, click **This PC** (has a computer monitor icon) |
+| | 4. In the main area, you see drives (like "Local Disk (C:)") |
+| **To verify:** | 5. **Double-click Local Disk (C:)** |
+| `dir C:\` | 6. You're now inside the C: drive (address bar at top shows "This PC > Local Disk (C:)") |
+| Shows all folders on C: drive (SharedData should be there) | 7. Right-click in the EMPTY WHITE SPACE (not on an existing folder) |
+| | 8. A menu pops up → Hover over **New** → A side menu appears |
+| | 9. Click **Folder** from the side menu |
+| | 10. A new folder appears named "New folder" with the name highlighted in blue |
+| | 11. Type: **SharedData** (this replaces "New folder") |
+| | 12. Press **Enter** |
+| | 13. Folder created! You should see SharedData folder in C: drive |
 
 ---
 
-## **STEP 15: Test the Shared Folder**
+## TASK 14: SHARE A FOLDER (Give Network Access)
 
-Let's see if we can actually use the shared folder!
-
-### **On PC2:**
-
-1. **Open File Explorer** (Windows + E)
-2. **Click "This PC"** on the left
-3. **Look at the main area** - you should see **Z: (\\\\PC1\\SharedData)** ✅
-4. **Double-click Z:** to open it
-5. You should see the empty SharedData folder!
-6. **Let's create a test file:**
-   - **Right-click in the empty space**
-   - **New → Text Document**
-   - **Name it: test.txt**
-   - **Press Enter**
-7. **Double-click test.txt** to open it
-8. **Type: Hello from PC2!**
-9. **File → Save**
-10. **Close Notepad**
-11. **Now try to delete it:**
-    - **Right-click test.txt**
-    - **Click "Delete"**
-
-**✅ If you could create, edit, and delete the file - SUCCESS!** 🎉
-
-This proves that:
-- PC2 can access PC1's shared folder
-- User1 has proper permissions
-- Everything is working!
-
----
-
-## **STEP 16: Test What Happens When We Remove Permission**
-
-Let's see what happens when User1 loses access!
-
-### **On PC1:**
-
-1. **Open Command Prompt as Administrator:**
-   - **Click Start**
-   - **Type: cmd**
-   - **Right-click "Command Prompt"**
-   - **Click "Run as administrator"**
-   - **Click "Yes"** if asked
-2. **Type this command:**
-   ```
-   net localgroup ProjectTeam User1 /delete
-   ```
-3. **Press Enter**
-4. You should see: "The command completed successfully."
-
-**This removes User1 from the ProjectTeam group!**
-
-### **On PC2:**
-
-1. **Go to File Explorer**
-2. **Try to open Z: drive**
-3. **Try to create a new file**
-
-**❌ You should get an error: "Access is denied"** or "You do not have permission"
-
-**✅ This proves permissions are working!** When User1 was removed from ProjectTeam, they immediately lost access!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Open **File Explorer** → Go to **C:\ drive** |
+| 2. Type: | 2. Find the **SharedData** folder you just created |
+| `net share SharedData=C:\SharedData /grant:ProjectTeam,CHANGE` | 3. **Right-click SharedData** folder |
+| 3. Press **Enter** | 4. A big menu appears → Click **Properties** (at the very bottom) |
+| 4. Should see: "SharedData was shared successfully" | 5. "SharedData Properties" window opens with tabs at the top |
+| | 6. Click the **Sharing** tab (3rd or 4th tab at top) |
+| | 7. You see "Network File and Folder Sharing" section |
+| | 8. In the middle of this tab, click **Advanced Sharing** button |
+| | 9. "Advanced Sharing" window pops up (smaller window) |
+| | 10. At the top, CHECK the box: **Share this folder** |
+| | 11. Below that, "Share name:" should show **SharedData** (don't change it) |
+| | 12. Below that, click **Permissions** button |
+| | 13. "Permissions for SharedData" window opens |
+| | 14. In the top section "Group or user names:", you see **Everyone** |
+| | 15. Click **Everyone** to select it |
+| | 16. At the bottom, click **Remove** button (Everyone disappears) |
+| | 17. Now click **Add** button (to add ProjectTeam) |
+| | 18. "Select Users or Groups" window pops up |
+| | 19. In the box at bottom, type: **ProjectTeam** |
+| | 20. Click **Check Names** button (bottom-left) - ProjectTeam gets underlined |
+| | 21. Click **OK** |
+| | 22. Back in Permissions window, **ProjectTeam** now appears in the list |
+| | 23. Click **ProjectTeam** to select it |
+| | 24. In the bottom section "Permissions for ProjectTeam": |
+| | 25. CHECK the box under **Allow** for **Change** (Read should auto-check too) |
+| | 26. Click **OK** (bottom-right) |
+| | 27. Click **OK** on Advanced Sharing window |
+| | 28. Click **Close** on SharedData Properties (or keep open for next task) |
 
 ---
 
-# 📸 IMPORTANT: Take Screenshots!
+## TASK 15: SET NTFS PERMISSIONS (File-Level Security)
 
-For your assignment (PLR), you need to take these screenshots:
-
-## Screenshots to Take:
-
-### From PC1:
-1. System Properties showing Workgroup = "NetAppsLab"
-2. Command Prompt with successful `ping PC2`
-3. Computer Management showing User1 created
-4. Command Prompt showing `net localgroup ProjectTeam` with User1 listed
-5. SharedData Properties - Sharing tab
-6. SharedData Properties - Security tab
-
-### From PC2:
-7. Command Prompt with successful `net use Z:` command
-8. File Explorer showing Z: drive
-9. test.txt file in Z: drive
-10. "Access Denied" error message
-
-**How to take screenshots:**
-- Press **PrtScn** button on keyboard (copies whole screen)
-- OR press **Windows + Shift + S** (lets you select an area)
-- Paste into Paint or Word
-
----
-
-# ✅ Lab Complete Checklist
-
-Congratulations! Check off what you've accomplished:
-
-- [ ] Both PCs renamed to PC1 and PC2
-- [ ] Both PCs in workgroup "NetAppsLab"
-- [ ] Network Discovery enabled on both
-- [ ] Firewall temporarily disabled
-- [ ] Can ping between both PCs
-- [ ] User1 created on PC1
-- [ ] ProjectTeam group created
-- [ ] User1 added to ProjectTeam
-- [ ] SharedData folder created
-- [ ] Folder shared with ProjectTeam
-- [ ] NTFS permissions set for ProjectTeam
-- [ ] User1 created on PC2
-- [ ] Z: drive mapped on PC2
-- [ ] Can create/edit/delete files on Z:
-- [ ] Access denied works when user removed
-- [ ] All screenshots taken
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. If SharedData Properties is still open, skip to step 4 |
+| 2. Type: | 2. Otherwise: Right-click **SharedData** folder → Click **Properties** |
+| `icacls "C:\SharedData" /grant ProjectTeam:(OI)(CI)M` | 3. SharedData Properties window opens |
+| 3. Press **Enter** | 4. At the top, click the **Security** tab (should be 4th tab) |
+| 4. Should see: "processed 1 files successfully" | 5. You see two sections: |
+| | - Top: "Group or user names:" (lists users/groups) |
+| **What the codes mean:** | - Bottom: "Permissions for [whoever is selected]" |
+| - `icacls` = change permissions | 6. In the middle, click **Edit** button |
+| - `(OI)` = Object Inherit (applies to files) | 7. "Permissions for SharedData" window pops up |
+| - `(CI)` = Container Inherit (applies to folders) | 8. Click **Add** button (bottom-left area) |
+| - `M` = Modify permission | 9. "Select Users or Groups" window appears |
+| | 10. In the bottom box "Enter the object names", type: **ProjectTeam** |
+| | 11. Click **Check Names** (bottom-left) - ProjectTeam gets underlined |
+| | 12. Click **OK** |
+| | 13. Back in Permissions window, in the top list, click **ProjectTeam** to select it |
+| | 14. In the bottom section "Permissions for ProjectTeam": |
+| | 15. Find the row that says **Modify** (about 3rd row) |
+| | 16. CHECK the box under **Allow** column for **Modify** |
+| | 17. When you check Modify, it automatically checks: |
+| | - Read & execute |
+| | - List folder contents |
+| | - Read |
+| | - Write |
+| | 18. Click **OK** button (bottom-right) |
+| | 19. Click **OK** or **Close** to close SharedData Properties |
 
 ---
 
-# 🎓 What You Learned
+## TASK 16: VIEW EFFECTIVE PERMISSIONS (What User1 Can Actually Do)
 
-You now know how to:
-
-✅ Set up a peer-to-peer network (workgroup)  
-✅ Enable computers to see each other  
-✅ Create user accounts  
-✅ Create groups and add users to them  
-✅ Share folders on a network  
-✅ Set permissions (both Share and NTFS)  
-✅ Map network drives  
-✅ Test and troubleshoot access control  
-
-**These are real IT skills used in businesses every day!** 🎉
-
----
-
-# ⚠️ Remember: Turn Firewall Back ON!
-
-**On BOTH PC1 and PC2:**
-1. Start → firewall
-2. Click "Turn Windows Defender Firewall on or off"
-3. Select "Turn on Windows Defender Firewall"
-4. Click OK
-
----
-
-# ❓ Troubleshooting Common Problems
-
-| Problem | What to Check | Solution |
-|---------|--------------|----------|
-| Can't ping other PC | Are both on same network? | Check WiFi/cable connection |
-| | Same workgroup name? | Must be spelled exactly the same |
-| | Firewall off? | Temporarily disable firewall |
-| Can't see PC in Network | Network Discovery on? | Go back to Step 3 |
-| Access Denied to share | User in correct group? | Check group membership |
-| | Permissions set correctly? | Review Steps 11-12 |
-| "Network path not found" | Is other PC on? | Make sure PC1 is running |
-| | Can you ping it? | Test with ping command |
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Right-click **SharedData** folder → **Properties** |
+| 2. Type: `icacls "C:\SharedData"` | 2. Click **Security** tab |
+| 3. Press **Enter** | 3. Click **Advanced** button (bottom area) |
+| 4. Shows all permissions: | 4. "Advanced Security Settings for SharedData" window opens |
+| `C:\SharedData ProjectTeam:(OI)(CI)M` | 5. At the top, click **Effective Access** tab (last tab on the right) |
+| | 6. You see "View the effective access for a user, group, or device" |
+| **Permission codes:** | 7. Click **Select a user** link (blue link) |
+| - `F` = Full control | 8. "Select User or Group" window pops up |
+| - `M` = Modify | 9. In the bottom box, type: **User1** |
+| - `RX` = Read & execute | 10. Click **Check Names** button - User1 gets underlined |
+| - `R` = Read-only | 11. Click **OK** |
+| | 12. Back in Advanced Security Settings |
+| | 13. Click **View effective access** button |
+| | 14. A list appears showing exactly what User1 can do: |
+| | - Traverse folder / execute file |
+| | - List folder / read data |
+| | - Read attributes |
+| | - Read extended attributes |
+| | - Create files / write data |
+| | - Create folders / append data |
+| | - Write attributes |
+| | - Write extended attributes |
+| | - Delete |
+| | - Read permissions |
+| | 15. Click **OK** to close all windows |
 
 ---
 
-**Need more help?**
-- Check the [Troubleshooting Guide](../Resources/troubleshooting.md)
-- Look up terms in the [Glossary](../Resources/glossary.md)
-- Ask your instructor!
+## TASK 17: MAP NETWORK DRIVE (Connect to Shared Folder from Other PC)
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Open **File Explorer** |
+| 2. Type: | 2. Click **This PC** (left sidebar) |
+| `net use Z: \\PC1\SharedData /user:PC1\User1 P@ssword123` | 3. At the top ribbon, click **Computer** tab (or you might already see the ribbon) |
+| 3. Press **Enter** | 4. In the ribbon, click **Map network drive** button (has a drive icon with network cable) |
+| 4. Should see: | 5. A "Map Network Drive" window pops up |
+| `The command completed successfully.` | 6. **Drive:** Click the dropdown and select **Z:** |
+| | 7. **Folder:** Click in the box and type `\\PC1\SharedData` |
+| **To make it permanent (reconnect after restart):** | (Replace PC1 with actual computer name) |
+| Add `/persistent:yes` at the end: | 8. CHECK the box: **Connect using different credentials** |
+| `net use Z: \\PC1\SharedData /user:PC1\User1 P@ssword123 /persistent:yes` | 9. At the bottom, click **Finish** button |
+| | 10. A login window appears "Windows Security" |
+| | 11. **User name:** Type **PC1\User1** (computer name backslash username) |
+| | 12. **Password:** Type **P@ssword123** |
+| | 13. CHECK the box: **Remember my credentials** |
+| | 14. Click **OK** |
+| | 15. Z: drive appears in File Explorer! |
+| | 16. You can now browse SharedData as if it's a local drive |
 
 ---
 
-**Great job completing the lab!** 🎉👏
+## TASK 18: VIEW ALL MAPPED DRIVES
 
-Now document everything in your PLR (Personal Learning Record) for your assessment!
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Open **File Explorer** |
+| 2. Type: `net use` | 2. Click **This PC** (left sidebar) |
+| 3. Press **Enter** | 3. In the main area, look under "Network locations" section |
+| 4. Shows table like: | 4. You'll see drives like: |
+| `Status       Local     Remote` | **SharedData (\\PC1) (Z:)** |
+| `OK           Z:        \\PC1\SharedData` | 5. Z: drive is your mapped network drive |
 
+---
+
+## TASK 19: DISCONNECT/REMOVE MAPPED DRIVE
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt** | 1. Open **File Explorer** |
+| 2. Type: `net use Z: /delete` | 2. Click **This PC** |
+| 3. Press **Enter** | 3. Under "Network locations", find **Z:** drive |
+| 4. Should see: `Z: was deleted successfully.` | 4. **Right-click Z:** drive |
+| | 5. A menu appears → Click **Disconnect** |
+| **To remove ALL mapped drives at once:** | 6. Z: drive disappears! |
+| Type: `net use * /delete` | |
+| Press Y to confirm for each drive | |
+
+---
+
+## TASK 20: REMOVE USER FROM GROUP
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Press **Windows key + R** |
+| 2. Type: `net localgroup ProjectTeam User1 /delete` | 2. Type: **compmgmt.msc** → Press **Enter** |
+| 3. Press **Enter** | 3. Expand **Local Users and Groups** → Click **Groups** |
+| 4. Should see: `The command completed successfully.` | 4. Find and **double-click ProjectTeam** |
+| 5. User1 removed from ProjectTeam! | 5. "ProjectTeam Properties" window opens |
+| | 6. In the Members list, click **User1** to select it |
+| | 7. Click **Remove** button (below the Members list) |
+| | 8. User1 disappears from the list |
+| | 9. Click **OK** to close |
+
+---
+
+## TASK 21: DELETE A USER ACCOUNT
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Press **Windows key + R** |
+| 2. Type: `net user User1 /delete` | 2. Type: **compmgmt.msc** → Press **Enter** |
+| 3. Press **Enter** | 3. Expand **Local Users and Groups** → Click **Users** |
+| 4. Should see: `The command completed successfully.` | 4. In the right panel, find **User1** |
+| 5. User1 deleted! | 5. **Right-click User1** |
+| | 6. A menu appears → Click **Delete** |
+| | 7. A warning appears: "Are you sure you want to delete the user User1?" |
+| | 8. Click **Yes** |
+| | 9. User1 disappears from the list |
+
+---
+
+## TASK 22: DELETE A GROUP
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Press **Windows key + R** |
+| 2. Type: `net localgroup ProjectTeam /delete` | 2. Type: **compmgmt.msc** → Press **Enter** |
+| 3. Press **Enter** | 3. Expand **Local Users and Groups** → Click **Groups** |
+| 4. Should see: `The command completed successfully.` | 4. In the right panel, find **ProjectTeam** |
+| 5. Group deleted! | 5. **Right-click ProjectTeam** |
+| | 6. A menu appears → Click **Delete** |
+| | 7. A warning appears: "Are you sure you want to delete the group ProjectTeam?" |
+| | 8. Click **Yes** |
+| | 9. ProjectTeam disappears from the list |
+
+---
+
+## TASK 23: REMOVE SHARE FROM FOLDER (Stop Sharing)
+
+| TERMINAL METHOD | GUI METHOD |
+|-----------------|------------|
+| 1. Open **Command Prompt (Admin)** | 1. Go to **C:\** drive in File Explorer |
+| 2. Type: `net share SharedData /delete` | 2. Find **SharedData** folder |
+| 3. Press **Enter** | 3. **Right-click SharedData** → **Properties** |
+| 4. A confirmation message: | 4. Click **Sharing** tab |
+| `SharedData was deleted successfully.` | 5. Click **Advanced Sharing** button |
+| 5. Folder is no longer shared on the network | 6. UNCHECK the box: **Share this folder** |
+| | 7. Click **OK** |
+| | 8. Click **OK** or **Close** |
+| | 9. Folder is no longer shared! |
+
+---
+
+## QUICK REFERENCE CHEAT SHEET
+
+| Action | Terminal Command | GUI Location |
+|--------|------------------|--------------|
+| Rename computer | `Rename-Computer -NewName "PC1"` | Settings → System → About → Rename this PC |
+| Change workgroup | `wmic computersystem where name="%computername%" call joindomainorworkgroup name="NetAppsLab"` | System → Advanced system settings → Computer Name → Change |
+| Check computer name | `hostname` | Settings → System → About |
+| Enable Network Discovery | `netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes` | Control Panel → Network and Sharing Center → Advanced sharing settings |
+| Turn off firewall | `netsh advfirewall set privateprofile state off` | Control Panel → Windows Defender Firewall → Turn off |
+| Ping another PC | `ping PC2` | (No GUI - use terminal) |
+| View shared folders | `net view \\PC2` | File Explorer address bar: `\\PC2` |
+| Check services | `Get-Service LanmanServer` | Win+R → services.msc |
+| Create user | `net user User1 Password /add` | Win+R → compmgmt.msc → Users → New User |
+| Create group | `net localgroup ProjectTeam /add` | Win+R → compmgmt.msc → Groups → New Group |
+| Add user to group | `net localgroup ProjectTeam User1 /add` | compmgmt.msc → Groups → Double-click group → Add |
+| Check group members | `net localgroup ProjectTeam` | compmgmt.msc → Groups → Double-click group |
+| Create folder | `mkdir C:\SharedData` | File Explorer → Right-click → New → Folder |
+| Share folder | `net share SharedData=C:\SharedData /grant:ProjectTeam,CHANGE` | Right-click folder → Properties → Sharing → Advanced Sharing |
+| Set NTFS permissions | `icacls "C:\SharedData" /grant ProjectTeam:(OI)(CI)M` | Right-click folder → Properties → Security → Edit → Add |
+| View permissions | `icacls "C:\SharedData"` | Right-click folder → Properties → Security → Advanced → Effective Access |
+| Map network drive | `net use Z: \\PC1\SharedData /user:PC1\User1 Password` | File Explorer → This PC → Map network drive |
+| View mapped drives | `net use` | File Explorer → This PC → Network locations |
+| Disconnect drive | `net use Z: /delete` | Right-click drive → Disconnect |
+| Remove user from group | `net localgroup ProjectTeam User1 /delete` | compmgmt.msc → Groups → Double-click → Select user → Remove |
+| Delete user | `net user User1 /delete` | compmgmt.msc → Users → Right-click user → Delete |
+| Delete group | `net localgroup ProjectTeam /delete` | compmgmt.msc → Groups → Right-click group → Delete |
+| Stop sharing folder | `net share SharedData /delete` | Right-click folder → Properties → Sharing → Advanced Sharing → Uncheck |
+
+---
+
+## Tips for Choosing a Method
+
+**Use GUI When:**
+- You're learning and want to see what options are available
+- You need to browse through settings
+- You're not sure of the exact command
+- You want visual confirmation of changes
+
+**Use Terminal When:**
+- You know exactly what you want to do
+- You need to repeat the same task multiple times
+- You want to create scripts to automate tasks
+- You're working on a remote computer (via SSH/RDP)
+- You're documenting steps for others
+
+---
+
+**Practice both methods to become a networking pro!**
