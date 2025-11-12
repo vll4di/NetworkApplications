@@ -319,6 +319,25 @@ Both should show **Running**
 
 ---
 
+## BEFORE ACTIVITY 2: Reinforce Key Concepts
+
+Complete these questions before starting Tasks 9-16:
+
+1. Local Users and Groups only apply to the current computer and are ideal for **W______** environments.
+2. **S______** permissions control access over the network.
+3. **N______** permissions control access locally and remotely.
+4. The most **r________** permission determines what a user can actually do when combining Share and NTFS permissions.
+5. The Principle of **L______** Privilege states that users should have only the minimum access required.
+
+**Answers:**
+1. Workgroup
+2. Share
+3. NTFS
+4. restrictive
+5. Least
+
+---
+
 ## TASK 9: CREATE A USER ACCOUNT
 
 **Do on:** ONLY PC1 (the host)
@@ -662,7 +681,12 @@ Shows all permissions
 
 ## TASK 17: MAP NETWORK DRIVE (Connect to Shared Folder from Other PC)
 
-**Do on:** PC2 (but first create User1 on PC2 with same password as PC1)
+**Do on:** PC2
+
+**IMPORTANT:** Before mapping the drive, you must first create User1 on PC2:
+- Use Task 9 steps on PC2
+- Username: User1
+- Password: P@ssword123 (same as PC1)
 
 ### GUI METHOD
 
@@ -693,11 +717,20 @@ Shows all permissions
 net use Z: \\PC1\SharedData /user:PC1\User1 P@ssword123
 ```
 
+**IMPORTANT NOTE:** `net use` creates a temporary session. The drive will disappear after logout unless `/persistent:yes` is used.
+
 **To make permanent (reconnect after restart):**
 
 ```cmd
 net use Z: \\PC1\SharedData /user:PC1\User1 P@ssword123 /persistent:yes
 ```
+
+**After mapping, test access on PC2:**
+- Open Z: drive in File Explorer
+- Create a new text file
+- Edit it
+- Delete it
+- Confirm that permissions behave as configured
 
 ---
 
@@ -756,9 +789,11 @@ net use * /delete
 
 ---
 
-## TASK 20: REMOVE USER FROM GROUP
+## TASK 20: REMOVE USER FROM GROUP (Test Access Denial)
 
-**Do on:** PC1 (remove User1 from ProjectTeam to test access denial)
+**Do on:** PC1 (remove User1 from ProjectTeam)
+
+**Purpose:** After removing User1 from ProjectTeam, go to PC2 and attempt to access Z: drive again. You should get **"Access Denied"** error, proving permissions are working correctly.
 
 ### GUI METHOD
 
@@ -891,6 +926,44 @@ net share SharedData /delete
 | Delete user | `net user User1 /delete` | compmgmt.msc → Users → Right-click user → Delete |
 | Delete group | `net localgroup ProjectTeam /delete` | compmgmt.msc → Groups → Right-click group → Delete |
 | Stop sharing folder | `net share SharedData /delete` | Right-click folder → Properties → Sharing → Advanced Sharing → Uncheck |
+
+---
+
+## Troubleshooting Common Issues
+
+If you encounter problems during the lab, use these diagnostic commands:
+
+### Check SMB Services
+
+```powershell
+Get-Service LanmanServer
+```
+
+```powershell
+Get-Service LanmanWorkstation
+```
+
+Both should show **Status: Running**
+
+### Clear All Network Connections
+
+If mapped drives aren't working:
+
+```cmd
+net use * /delete
+```
+
+This removes all mapped drives and lets you start fresh.
+
+### View Current Permissions
+
+To check permissions on SharedData folder:
+
+```cmd
+icacls "C:\SharedData"
+```
+
+Shows all users/groups and their permission levels.
 
 ---
 
