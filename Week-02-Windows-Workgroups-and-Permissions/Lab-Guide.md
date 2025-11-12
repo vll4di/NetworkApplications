@@ -17,6 +17,37 @@ Complete guide showing both GUI (clicking) and Terminal (command line) methods f
 
 ---
 
+## IMPORTANT: Windows Edition Requirements
+
+### Check Your Windows Edition First!
+
+Run this command to check:
+
+```powershell
+Get-ComputerInfo | Select-Object WindowsProductName
+```
+
+Or: Settings → System → About → Look for "Windows specifications"
+
+### Windows Editions:
+
+**If you have Windows Pro, Enterprise, or Education:**
+- ✓ Can use GUI (Computer Management) for Tasks 9-12
+- ✓ Can use Terminal commands
+- ✓ Full instructions apply
+
+**If you have Windows Home:**
+- ✗ Cannot use Computer Management (compmgmt.msc)
+- ✗ "Local Users and Groups" option NOT available
+- ✓ MUST use Terminal commands for Tasks 9-12
+- ✓ Can still complete the lab!
+
+### Windows Home Users - Use Terminal Method Only
+
+For Tasks 9-12, Windows Home users MUST skip the GUI method and use Terminal commands only. All other tasks (1-8, 13-23) work the same on all editions.
+
+---
+
 ## Important Terms
 
 | Term | Definition |
@@ -431,6 +462,8 @@ Complete these questions before starting Tasks 9-16:
 
 **Do on:** ONLY PC1 (the host)
 
+**Windows Home Users:** This GUI method won't work on Windows Home edition. Skip to Terminal Method below.
+
 ### GUI METHOD
 
 1. Press **Windows key + R** keys together
@@ -480,6 +513,8 @@ net user
 
 **Do on:** ONLY PC1 (the host)
 
+**Windows Home Users:** This GUI method won't work on Windows Home edition. Skip to Terminal Method below.
+
 ### GUI METHOD
 
 1. Press **Windows key + R**
@@ -523,6 +558,8 @@ net localgroup
 
 **Do on:** ONLY PC1 (the host)
 
+**Windows Home Users:** This GUI method won't work on Windows Home edition. Skip to Terminal Method below.
+
 ### GUI METHOD
 
 1. Press **Windows key + R**
@@ -558,6 +595,8 @@ net localgroup ProjectTeam User1 /add
 ## TASK 12: CHECK WHO IS IN A GROUP
 
 **Do on:** ONLY PC1 (the host)
+
+**Windows Home Users:** This GUI method won't work on Windows Home edition. Skip to Terminal Method below.
 
 ### GUI METHOD
 
